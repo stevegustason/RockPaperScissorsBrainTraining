@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var options = ["Rock", "Paper", "Scissors"]
+    @State private var opponentSelection = Int.random(in: 0...2)
+    @State private var winOrLoseOptions = ["win", "lose"]
+    @State private var winOrLose = Int.random(in: 0...1)
+    @State private var numQuestion = 0
+    @State private var numRight = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            Color.brown
+                .ignoresSafeArea()
+            VStack {
+                Text("Rock, Paper, Scissors")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.white)
+                Text("Brain Training")
+                    .font(.title.bold())
+                    .foregroundColor(.white)
+                Text("Score: \(numRight)/\(numQuestion)")
+                    .font(.title)
+                    .foregroundColor(.white)
+                Text("Your opponent threw: \(options[opponentSelection])")
+                    .font(.title)
+                    .foregroundColor(.white)
+                Text("Select the correct option to \(winOrLoseOptions[winOrLose])!!")
+                    .font(.title)
+                    .foregroundColor(.white)
+            }
         }
-        .padding()
     }
 }
 
